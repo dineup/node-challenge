@@ -1,0 +1,62 @@
+#+TITLE: Food diary API
+#+DATE: [2021-12-22 Wed]
+#+AUTHOR: Philipp Uhl
+
+
+This API provides a simple REST API that allows you to store your
+latest food discoveries with a text and a rating. It powers a
+diary frontend for keeping track of what you ate.
+
+
+* Usage
+
+To start the server:
+#+BEGIN_SRC js
+npm i
+npm run start
+#+END_SRC
+
+* Testing
+
+To start testing:
+#+BEGIN_SRC js
+npm run test
+#+END_SRC
+
+* API
+
+** GET =/v1/food/experiences=
+
+Returns:
+- All experiences added to the diary.
+  #+BEGIN_SRC js
+  [{
+    "category": <string>,
+    "description": <string>,
+    "rating": <int>
+  }]
+  #+END_SRC
+
+** POST =/v1/food/experiences=
+
+Add an experience.
+
+Body parameters:
+- =category: <string>= :: The food's category.
+- =description: <string>= :: A description of your experience.
+- =rating: <int>= :: A rating between 1 and 5, where 5 is best
+
+Returns:
+"ok"
+
+** POST =/v1/user/login=
+
+Returns a JWT for the user
+
+Body parameters:
+- =username: <string>= :: A user name
+- =password: <int>= :: The users password
+
+Returns:
+- 200, JWT as body (JSON.stringified)
+- 401, "Username or password wrong"
